@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
      storageReference= FirebaseStorage.getInstance().getReference();
 
+        retrieveImageFromStorage();
+
     if (currentUser!=null){
          uid= currentUser.getUid();
     }
@@ -79,12 +82,11 @@ public class MainActivity extends AppCompatActivity {
                 enroll1= snapshot.child("enrollment").getValue(String.class);
                 course1= snapshot.child("course1").getValue(String.class);
 
-                String imgname= id1+".jpg";
+               //String imgname= id1+".jpg";
+//                String imgurl= "gs://guard-d2545.appspot.com/"+imgname;
+                String imageUrl = "CE20023.jpg";
 
-                String imgurl= "gs://guard-d2545.appspot.com/"+imgname;
-
-                Glide.with(context).load(imgurl).apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)).into(img);
+//                Glide.with(context).load(storageReference.child(imageUrl)).into(img);
 
                 // id1= snapshot.child("id").getValue(String.class);
                // enrollment1= snapshot.child("enrollment").getValue(String.class);
@@ -106,5 +108,28 @@ public class MainActivity extends AppCompatActivity {
     });
 
 
+    }
+    private void retrieveImageFromStorage() {
+        // Replace "images/image.jpg" with the path/reference to your image in Firebase Storage
+        String imagePath = "CE20023.jpg";
+
+        // Get the download URL for the image
+        storageReference.child(imagePath).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    // Load the image into the ImageView using Glide
+                    Glide.with(MainActivity.this)
+                            .load(task.getResult())
+                            .apply(new RequestOptions()
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE) // Disable disk caching
+                                    .skipMemoryCache(true) // Skip memory caching
+                            )
+                            .into(img);
+                } else {
+                    // Handle the failure to get the download URL
+                }
+            }
+        });
     }
 }
