@@ -39,14 +39,14 @@ import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView name,id,enrollment,course;
+    private TextView name, id, enrollment, course;
     private String name1, id1, enroll1, course1;
     private ImageView img;
 
-    FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
-    FirebaseUser currentUser= firebaseAuth.getCurrentUser();
-    FirebaseDatabase database= FirebaseDatabase.getInstance();
-    DatabaseReference reference= database.getReference("Users");
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference reference = database.getReference("Users");
 
     StorageReference storageReference;
 
@@ -56,80 +56,88 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    name=findViewById(R.id.name);
-    id= findViewById(R.id.id);
-    enrollment= findViewById(R.id.enrollment);
-    course= findViewById(R.id.course);
-    img= findViewById(R.id.image);
-    Context context=this;
+        name = findViewById(R.id.name);
+        id = findViewById(R.id.id);
+        enrollment = findViewById(R.id.enrollment);
+        course = findViewById(R.id.course);
+        img =(ImageView) findViewById(R.id.image);
+        Context context = this;
 
-        String uid=null;
+        String uid = null;
 
-     storageReference= FirebaseStorage.getInstance().getReference();
 
-        retrieveImageFromStorage();
+        if (currentUser != null) {
+            uid = currentUser.getUid();
+        }
+        reference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
 
-    if (currentUser!=null){
-         uid= currentUser.getUid();
-    }
-    reference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    name1 = snapshot.child("name").getValue(String.class);
+                    id1 = snapshot.child("id").getValue(String.class);
+                    enroll1 = snapshot.child("enrollment").getValue(String.class);
+                    course1 = snapshot.child("course1").getValue(String.class);
 
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if (snapshot.exists()) {
-                name1= snapshot.child("name").getValue(String.class);
-                id1= snapshot.child("id").getValue(String.class);
-                enroll1= snapshot.child("enrollment").getValue(String.class);
-                course1= snapshot.child("course1").getValue(String.class);
-
-               //String imgname= id1+".jpg";
+                    //String imgname= id1+".jpg";
 //                String imgurl= "gs://guard-d2545.appspot.com/"+imgname;
-                String imageUrl = "CE20023.jpg";
+                    String imageUrl = id1 + ".jpg";
 
 //                Glide.with(context).load(storageReference.child(imageUrl)).into(img);
 
-                // id1= snapshot.child("id").getValue(String.class);
-               // enrollment1= snapshot.child("enrollment").getValue(String.class);
+                    // id1= snapshot.child("id").getValue(String.class);
+                    // enrollment1= snapshot.child("enrollment").getValue(String.class);
+
+                    //retrieveImageFromStorage();
+
+                    storageReference = FirebaseStorage.getInstance().getReference().child(imageUrl);
 
 
-                name.setText(name1);
-                id.setText(id1);
-                enrollment.setText(enroll1);
-                course.setText(course1);
+                    // Replace "images/image.jpg" with the path/reference to your image in Firebase Storage
+                    String imagePath = "CE20023.jpg";
 
-            }
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-
-        }
-    });
-
-
-    }
-    private void retrieveImageFromStorage() {
-        // Replace "images/image.jpg" with the path/reference to your image in Firebase Storage
-        String imagePath = "CE20023.jpg";
-
-        // Get the download URL for the image
-        storageReference.child(imagePath).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
+                    // Get the download URL for the image
+                    //storageReference.child(imageUrl).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    //@Override
+                    //public void onComplete(@NonNull Task<Uri> task) {
+                    //if (task.isSuccessful()) {
                     // Load the image into the ImageView using Glide
                     Glide.with(MainActivity.this)
-                            .load(task.getResult())
+                            .load(storageReference)
                             .apply(new RequestOptions()
                                     .diskCacheStrategy(DiskCacheStrategy.NONE) // Disable disk caching
                                     .skipMemoryCache(true) // Skip memory caching
                             )
                             .into(img);
-                } else {
-                    // Handle the failure to get the download URL
-                }
+                } //else {
+                // Handle the failure to get the download URL
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+            //}
         });
+
+        name.setText(name1);
+        id.setText(id1);
+        enrollment.setText(enroll1);
+        course.setText(course1);
+
     }
+
+    //}
+
+    //@Override
+    //public void onCancelled(@NonNull DatabaseError error) {
+
 }
+//});
+
+
+    /*}
+    //private void retrieveImageFromStorage() {
+
+    //}
+}*/
