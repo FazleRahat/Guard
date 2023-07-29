@@ -9,10 +9,11 @@ android {
 
     defaultConfig {
         applicationId "com.example.myapplication34"
-        minSdk 24
+        minSdk 19
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -56,4 +57,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    implementation 'com.android.support:multidex:1.0.3'
 }
