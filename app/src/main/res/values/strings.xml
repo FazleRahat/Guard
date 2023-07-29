@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">My Application34</string>
+    <string name="log_in_here">Log in Here</string>
+    <string name="email_user">Email_user</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="don_t_have_account_sign_up_here">Don\'t have account? Sign up here</string>
+    <string name="current_enrollment">Current Enrollment:</string>
+    <string name="id">ID:</string>
+    <string name="name">Name:</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="courses_enrolled">Courses enrolled:</string>
 </resources>

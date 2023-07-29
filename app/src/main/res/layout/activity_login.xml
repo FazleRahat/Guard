@@ -1,91 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#AEDAD6"
-    android:gravity="right"
+    android:gravity="end"
     android:orientation="vertical"
     tools:context=".Login">
 
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/loginU"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="120dp"
+        android:padding="10dp"
+        android:text="@string/log_in_here"
+        android:textColor="#0E0E0E"
+        android:textColorHighlight="#100202"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-        android:orientation="vertical">
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/email_userL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:ems="10"
+        android:hint="@string/email_user"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColorHint="#534F4F" />
 
-        <TextView
-            android:id="@+id/loginU"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="120dp"
-            android:layout_marginRight="150dp"
-            android:padding="10dp"
-            android:text="Log in Here"
-            android:textColor="#0E0E0E"
-            android:textColorHighlight="#100202"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/password_userL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#504C4C" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginbuttonU"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="100dp"
+        android:text="@string/sign_in" />
 
-        <EditText
-            android:id="@+id/email_userL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp"
-            android:ems="10"
-            android:hint="  Email_user"
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp"
-            android:paddingLeft="10dp"
-            android:textColorHint="#534F4F" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/switchToSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="80dp"
+        android:padding="10dp"
+        android:text="@string/don_t_have_account_sign_up_here"
+        android:textColor="#121111" />
 
-        <EditText
-            android:id="@+id/password_userL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp"
-            android:ems="10"
-            android:hint=" Password_user"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:paddingLeft="10dp"
-            android:textColorHint="#504C4C" />
+    <ProgressBar
+        android:id="@+id/progressbar1"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible" />
 
-        <Button
-            android:id="@+id/loginbuttonU"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="100dp"
-            android:text="Sign in" />
-
-        <TextView
-            android:id="@+id/switchToSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="80dp"
-            android:padding="10dp"
-            android:text="Don't have account? Sign up here "
-            android:textColor="#121111" />
-
-        <ProgressBar
-            android:id="@+id/progressbar1"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible" />
-    </LinearLayout>
 </LinearLayout>
