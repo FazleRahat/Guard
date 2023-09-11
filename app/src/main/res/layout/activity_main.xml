@@ -75,7 +75,14 @@
             android:id="@+id/classes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Class Schedules:"
+            android:text="@string/class_schedules"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/semester_fee"
             android:textSize="20sp" />
 
 

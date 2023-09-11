@@ -16,4 +16,6 @@
     <string name="courses_enrolled2">Courses Enrolled</string>
     <string name="courses_enrolled3">Courses Enrolled:</string>
     <string name="total_earned_credits">Total Earned Credits:</string>
+    <string name="semester_fee">Semester Fee:</string>
+    <string name="class_schedules">Class Schedules:</string>
 </resources>

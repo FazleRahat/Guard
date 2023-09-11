@@ -24,7 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 public class MainActivity extends AppCompatActivity {
 
     //***************************************** declaration ***************************************
-    private TextView name, id, enrollment, course, GPA, credit, week, classes;
+    private TextView name, id, enrollment, course, GPA, credit, week, classes, balance;
     private String name1;
     private String id1;
     private String enroll1;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private String ecredits;
     private String weekatt;
     private String Rclass;
+    private String fee;
     private ImageView img;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         credit= findViewById(R.id.credits);
         week= findViewById(R.id.week);
         classes= findViewById(R.id.classes);
+        balance= findViewById(R.id.bal);
 
         img = findViewById(R.id.image);
 
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     ecredits = snapshot.child("credits").getValue(String.class);
                     weekatt= snapshot.child("weekly").getValue(String.class);
                     Rclass= snapshot.child("schedule").getValue(String.class);
+                    fee= snapshot.child("fees").getValue(String.class);
 
                     String imagePath = id1 + ".jpg";
                     final Uri[] imageUrl = {null};
@@ -113,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     credit.setText(credit.getText() + " " + ecredits);
                     week.setText(week.getText()+ " " +weekatt);
                     classes.setText(classes.getText()+ " " +Rclass);
+                    balance.setText(balance.getText()+ " " +fee);
                 }
             }
 
