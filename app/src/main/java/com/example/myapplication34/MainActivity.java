@@ -24,13 +24,15 @@ import com.google.firebase.storage.FirebaseStorage;
 public class MainActivity extends AppCompatActivity {
 
     //***************************************** declaration ***************************************
-    private TextView name, id, enrollment, course, GPA, week;
+    private TextView name, id, enrollment, course, GPA, credit, week, classes;
     private String name1;
     private String id1;
     private String enroll1;
     private String course1;
     private String result;
+    private String ecredits;
     private String weekatt;
+    private String Rclass;
     private ImageView img;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -50,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
         enrollment = findViewById(R.id.enrollment);
         course = findViewById(R.id.course);
         GPA= findViewById(R.id.res);
+        credit= findViewById(R.id.credits);
         week= findViewById(R.id.week);
+        classes= findViewById(R.id.classes);
+
         img = findViewById(R.id.image);
+
 
         String uid = null;
 
@@ -73,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
                     enroll1 = snapshot.child("enrollment").getValue(String.class);
                     course1 = snapshot.child("course1").getValue(String.class);
                     result = snapshot.child("result").getValue(String.class);
+                    ecredits = snapshot.child("credits").getValue(String.class);
                     weekatt= snapshot.child("weekly").getValue(String.class);
+                    Rclass= snapshot.child("schedule").getValue(String.class);
 
                     String imagePath = id1 + ".jpg";
                     final Uri[] imageUrl = {null};
@@ -102,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
                     enrollment.setText(enrollment.getText() + " " + enroll1);
                     course.setText(course.getText() + " " + course1);
                     GPA.setText(GPA.getText() + " " + result);
+                    credit.setText(credit.getText() + " " + ecredits);
                     week.setText(week.getText()+ " " +weekatt);
+                    classes.setText(classes.getText()+ " " +Rclass);
                 }
             }
 

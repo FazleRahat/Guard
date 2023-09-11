@@ -58,10 +58,24 @@
             android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/credits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/total_earned_credits"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/week"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/weekly_attendence"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/classes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Class Schedules:"
             android:textSize="20sp" />
 
 
