@@ -23,8 +23,14 @@ import com.google.firebase.storage.FirebaseStorage;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView name, id, enrollment, course;
-    private String name1, id1, enroll1, course1;
+    //***************************************** declaration ***************************************
+    private TextView name, id, enrollment, course, GPA, week;
+    private String name1;
+    private String id1;
+    private String enroll1;
+    private String course1;
+    private String result;
+    private String weekatt;
     private ImageView img;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -36,10 +42,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //******************************** find id *********************************
+
         name = findViewById(R.id.name);
         id = findViewById(R.id.id);
         enrollment = findViewById(R.id.enrollment);
         course = findViewById(R.id.course);
+        GPA= findViewById(R.id.res);
+        week= findViewById(R.id.week);
         img = findViewById(R.id.image);
 
         String uid = null;
@@ -54,10 +65,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
+
+                    //************************** data retrieval ***************************
+
                     name1 = snapshot.child("name").getValue(String.class);
                     id1 = snapshot.child("id").getValue(String.class);
                     enroll1 = snapshot.child("enrollment").getValue(String.class);
                     course1 = snapshot.child("course1").getValue(String.class);
+                    result = snapshot.child("result").getValue(String.class);
+                    weekatt= snapshot.child("weekly").getValue(String.class);
 
                     String imagePath = id1 + ".jpg";
                     final Uri[] imageUrl = {null};
@@ -85,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                     id.setText(id.getText() + " " + id1);
                     enrollment.setText(enrollment.getText() + " " + enroll1);
                     course.setText(course.getText() + " " + course1);
+                    GPA.setText(GPA.getText() + " " + result);
+                    week.setText(week.getText()+ " " +weekatt);
                 }
             }
 

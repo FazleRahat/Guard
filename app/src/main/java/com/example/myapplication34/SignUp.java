@@ -1,8 +1,5 @@
 package com.example.myapplication34;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
-   private TextView mTosignIn;
+    //*******************************declaration******************************************
+    private TextView mTosignIn;
     private EditText mName,mEmail,mPassword,mID;
     Button mSignupbtn;
     private ProgressBar mProgressbar;
@@ -34,15 +35,25 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        //*************************************find id******************************************
+
         mName = findViewById(R.id.name_userR);
         mEmail = findViewById(R.id.email_userR);
         mPassword = findViewById(R.id.password_userR);
-        mSignupbtn = findViewById(R.id.signupbuttonU);
-        mTosignIn = findViewById(R.id.switchToSignIn);
-        mProgressbar = findViewById(R.id.progressBar2);
         mID= findViewById(R.id.id_userR);
+
+        mSignupbtn = findViewById(R.id.signupbuttonU); //Sign up button
+
+        mTosignIn = findViewById(R.id.switchToSignIn); //login button
+
+        mProgressbar = findViewById(R.id.progressBar2);
+
+        //*********************************** auth and database instance ********************************
+
         fAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
+        //*********************************** sign in button ********************************
 
         mTosignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +62,12 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        //*********************************** register button ********************************
+
         mSignupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 String Name = mName.getText().toString().trim();
                 String Email = mEmail.getText().toString().trim();
                 String Password = mPassword.getText().toString().trim();
@@ -65,12 +79,19 @@ public class SignUp extends AppCompatActivity {
                     mName.setError("Name is Required");
                     return;
                 }
+
                 if(TextUtils.isEmpty(Email))
                 {
                     mEmail.setError("Email is Required");
                     return;
                 }
-                if(TextUtils.isEmpty(Email))
+
+                if (!Email.matches("(.*)@mbstu.ac.bd")){
+                    mEmail.setError("Email is not institution recognized");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(Id))
                 {
                     mID.setError("ID Required");
                     return;
@@ -87,6 +108,7 @@ public class SignUp extends AppCompatActivity {
                     mPassword.setError("Password must be greater 5 digit");
                     return;
                 }
+
                 mProgressbar.setVisibility(View.VISIBLE);
 
                 //Registration of user

@@ -7,7 +7,13 @@ android {
     namespace 'com.example.myapplication34'
     compileSdk 33
 
+    packagingOptions
+            {
+                exclude("androidsupportmultidexversion.txt")
+            }
+
     defaultConfig {
+
         applicationId "com.example.myapplication34"
         minSdk 19
         targetSdk 33

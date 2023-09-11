@@ -10,4 +10,9 @@
     <string name="name">Name:</string>
     <string name="dashboard">Dashboard</string>
     <string name="courses_enrolled">Courses enrolled:</string>
+    <string name="cgpa">CGPA:</string>
+    <string name="weekly_attendence">Weekly Attendance:</string>
+    <string name="courses_encrolled">Courses Encrolled</string>
+    <string name="courses_enrolled2">Courses Enrolled</string>
+    <string name="courses_enrolled3">Courses Enrolled:</string>
 </resources>

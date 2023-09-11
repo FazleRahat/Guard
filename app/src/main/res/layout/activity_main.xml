@@ -21,15 +21,7 @@
             android:scaleType="centerCrop"
             android:src="@color/black" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/dashboard"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,26 +29,41 @@
             android:text="@string/name"
             android:textSize="20sp" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/id"
             android:textSize="20sp" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/enrollment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/current_enrollment"
             android:textSize="20sp" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/course"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/courses_enrolled"
+            android:text="@string/courses_enrolled3"
             android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/res"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cgpa"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weekly_attendence"
+            android:textSize="20sp" />
+
 
     </LinearLayout>
 
