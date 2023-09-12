@@ -18,4 +18,10 @@
     <string name="total_earned_credits">Total Earned Credits:</string>
     <string name="semester_fee">Semester Fee:</string>
     <string name="class_schedules">Class Schedules:</string>
+    <string name="dahboard">Dashboard</string>
+    <string name="academic_info">Academic Info</string>
+    <string name="result_summary">Result Summary</string>
+    <string name="attendance">Attendance</string>
+    <string name="schedule_and_notices">Schedule and Notices</string>
+    <string name="account_section">Financial Info</string>
 </resources>
